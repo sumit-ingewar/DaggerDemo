@@ -5,15 +5,20 @@ import android.content.Context
 /**
  * Dummy class to simulate the actual Database using Room or Realm etc
  */
-class DatabaseService(private val context: Context) {
+class DatabaseService(
+    appContext: Context, dataBaseName: String,
+    dbVersion: Int
+) {
     private val databaseName: String
     private val version: Int
+    private val context: Context
 
     val dummyData: String
         get() = "DATABASE_DUMMY_DATA"
 
     init {
-        databaseName = "dummy_db"
-        version = 1
+        context = appContext
+        databaseName = dataBaseName
+        version = dbVersion
     }// do the initialisation here
 }

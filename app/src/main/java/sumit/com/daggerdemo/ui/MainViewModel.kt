@@ -1,12 +1,11 @@
 package sumit.com.daggerdemo.ui
 
-import android.content.Context
 
 import sumit.com.daggerdemo.data.local.DatabaseService
 import sumit.com.daggerdemo.data.remote.NetworkService
 
 
-class MainViewModel(context: Context) {
+class MainViewModel(databaseService: DatabaseService,networkService: NetworkService) {
 
     private val databaseService: DatabaseService
     private val networkService: NetworkService
@@ -15,7 +14,7 @@ class MainViewModel(context: Context) {
         get() = databaseService.dummyData + " : " + networkService.dummyData
 
     init {
-        networkService = NetworkService(context)
-        databaseService = DatabaseService(context)
+        this.networkService = networkService
+        this.databaseService = databaseService
     }
 }
