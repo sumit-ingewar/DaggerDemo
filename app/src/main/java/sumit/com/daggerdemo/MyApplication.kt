@@ -12,8 +12,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        networkService = NetworkService(this, "SOME_API_KEY")
-        databaseService = DatabaseService(this, "MyDB", 1)
+        DependencyComponent.inject(this)
 
     }
 }
